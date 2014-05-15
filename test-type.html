@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html>
+<head>	
+	<title>typeof and {}.toString.call</title>
+	<style>
+		body {
+			line-height: 1.6em;
+		}
+		 
+		.table {
+			font-family: "Lucida Sans Unicode", "Lucida Grande", Sans-Serif;
+			font-size: 12px;
+			background: #fff;
+			margin: 45px;
+			width: 880px;
+			border-collapse: collapse;
+			text-align: left;
+		}
+		
+		.table caption {
+			font-size: 16px;
+			font-weight: bold;
+			color: #039;
+			padding: 10px 8px;
+			border-bottom: 2px solid #6678b1;
+		}
+		
+		.table th {
+			font-size: 14px;
+			font-weight: normal;
+			color: #039;
+			padding: 10px 8px;
+			border-bottom: 2px solid #6678b1;
+		}
+		
+		.table td {
+			color: #669;
+			padding: 9px 8px 0px 8px;
+		}
+		
+		.table tr:hover td {
+			color: #009;
+			border-bottom: 1px dotted #6678b1;
+		}
+		 
+	</style>
+</head>
+<script>
+window.onload = function(){
+    var typeStrings = ["3", "new Number(3)", "\"foo\"", "new String(\"foo\")", 
+	                 "true", "new Boolean(true)", "new Date()", "new Error()", 
+			         "[1,2,3]", "new Array(1,2,3)", "new Function(\"\")", "/abc/g", 
+					 "new RegExp(\"xxxx\")", "{}", "new Object()", "null", "undefined"];
+					 
+					 
+	var typeTestObjs = [3, new Number(3), "foo", new String("foo"),
+	                  true, new Boolean(true), new Date(), new Error(), 
+					  [1,2,3], new Array(1,2,3), new Function(""), /abc/g, 
+					  new RegExp("xxxx"), {}, new Object(), null, undefined];
+					  
+	var types = ["Number", "Number", "String", "String",
+	                  "Boolean", "Boolean", "Date", "Error", 
+					  "Array", "Array", "Function", "RegExp", 
+					  "RegExp", "Object", "Object", "Null", "Undefined"];
+					  
+	var table = document.getElementById("typeofTable");
+
+	var IE10987Chrome34FireFox29Typeof = ["number","object","string","object","boolean","object",
+	                  "object","object","object","object","function","object",
+					  "object","object","object","object","undefined"];
+    
+					  
+	var typeofCollect = []; 
+	
+	for(var i=0; i<typeStrings.length; i++){
+		var row = table.insertRow(table.rows.length);  
+        var cell0 = row.insertCell(0);  
+		cell0.innerHTML = typeStrings[i]; 
+		var cell1 = row.insertCell(1); 
+		cell1.innerHTML = (typeof typeTestObjs[i]); 
+		typeofCollect.push("\""+(typeof typeTestObjs[i])+"\"");
+		var cell2 = row.insertCell(2); 
+		cell2.innerHTML = (types[i]); 
+		var cell3 = row.insertCell(3); 
+		cell3.innerHTML = (IE10987Chrome34FireFox29Typeof[i]); 
+		var cell4 = row.insertCell(4); 
+		cell4.innerHTML = (IE10987Chrome34FireFox29Typeof[i]); 
+	}
+	
+	console.log(typeofCollect);
+	
+	var toStringTable = document.getElementById("toStringTable");
+    
+	var IE109Chrome34FireFox29ToString = ["[object Number]","[object Number]","[object String]","[object String]",
+	                    "[object Boolean]","[object Boolean]","[object Date]","[object Error]",
+						"[object Array]","[object Array]","[object Function]","[object RegExp]",
+						"[object RegExp]","[object Object]","[object Object]","[object Null]","[object Undefined]"];
+						
+	var IE87ToString = ["[object Number]","[object Number]","[object String]","[object String]",
+	            "[object Boolean]","[object Boolean]","[object Date]","[object Error]",
+				"[object Array]","[object Array]","[object Function]","[object RegExp]",
+				"[object RegExp]","[object Object]","[object Object]","[object Object]","[object Object]" ];					
+	
+	var toStringCollect = []; 
+	 
+	var toString = {}.toString;
+	for(var i=0; i<typeStrings.length; i++){
+		var row = toStringTable.insertRow(toStringTable.rows.length);  
+        var cell0 = row.insertCell(0);  
+		cell0.innerHTML = typeStrings[i]; 
+		var cell1 = row.insertCell(1); 
+		cell1.innerHTML = toString.call(typeTestObjs[i]); 
+		toStringCollect.push("\""+toString.call(typeTestObjs[i])+"\"");
+		var cell2 = row.insertCell(2); 
+		cell2.innerHTML = (types[i]); 
+		var cell3 = row.insertCell(3); 
+		cell3.innerHTML = (IE109Chrome34FireFox29ToString[i]); 
+		var cell4 = row.insertCell(4); 
+		cell4.innerHTML = (IE87ToString[i]); 
+	}
+	
+	console.log(toStringCollect);
+}
+</script>
+
+<body>  
+	<table id="typeofTable" class="table">
+	    <caption>Test different value by typeof method</caption> 
+		<tr><th>typeof(value)</th><th>current browser(output)</th><th>the right type</th><th>IE10/9,Chrome34,FireFox29</th><th>IE8/7</th></tr>
+	</table>
+	
+	<table id="toStringTable" class="table">
+	    <caption>Test different value by {}.toString.call method</caption> 
+		<tr><th>{}.toString.call(value)</th><th>current browser(output)</th><th>the right type</th><th>IE10/9,Chrome34,FireFox29</th><th>IE8/7</th></tr>
+	</table>
+</body>
+</html>
