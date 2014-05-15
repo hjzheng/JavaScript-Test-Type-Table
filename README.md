@@ -1,4 +1,8 @@
 JavaScript-Test-Type-Table
 ==========================
 
-typeof method and {}.toString.call test table
+Typeof method and {}.toString.call test table
+
+Run the test-type.html in your broswer, you will see the result.
+
+
