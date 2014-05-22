@@ -12,4 +12,4 @@ Run the test-type.html in your broswer, you will see the result.
 
 Run the test-Number-parseInt-parseFloat.html, you will see the data type conversion result.
 
-
+![image](https://raw.githubusercontent.com/hjzheng/JavaScript-Test-Type-Table/master/number-parseInt-parseFloat.png)
