@@ -47,7 +47,7 @@
 </head>
 <script>
 window.onload = function(){
-    var typeTestStrings = ["1", "+1", "-1", "0", "1.01", "-1.01", ".56", "0777", "0x777",
+    var typeTestStrings = ["1", "+1", "-1", "0", "1.01", "-1.01", ".56", "0777", "0x777", "Number.MAX_VALUE", "Number.MIN_VALUE",
 	                 "true", "false", 
 					 "new Date()", "new Error()", 
 			         "[]", "[10]", "[10, 11]", 
@@ -59,7 +59,7 @@ window.onload = function(){
 					 ];
 					 
 					 
-	var typeTestObjs = [1, +1, -1, 0, 1.01, -1.01, .56, 0777, 0x777,
+	var typeTestObjs = [1, +1, -1, 0, 1.01, -1.01, .56, 0777, 0x777, Number.MAX_VALUE, Number.MIN_VALUE,
 	                    true, false,
 	                    new Date(), new Error(), 
 						[], [10], [10, 11] , 
