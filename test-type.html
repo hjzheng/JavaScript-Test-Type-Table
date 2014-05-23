@@ -50,24 +50,24 @@ window.onload = function(){
     var typeStrings = ["3", "new Number(3)", "\"foo\"", "new String(\"foo\")", 
 	                 "true", "new Boolean(true)", "new Date()", "new Error()", 
 			         "[1,2,3]", "new Array(1,2,3)", "new Function(\"\")", "/abc/g", 
-					 "new RegExp(\"xxxx\")", "{}", "new Object()", "null", "undefined"];
+					 "new RegExp(\"xxxx\")", "{}", "new Object()", "null", "undefined", "arguments"];
 					 
 					 
 	var typeTestObjs = [3, new Number(3), "foo", new String("foo"),
 	                  true, new Boolean(true), new Date(), new Error(), 
 					  [1,2,3], new Array(1,2,3), new Function(""), /abc/g, 
-					  new RegExp("xxxx"), {}, new Object(), null, undefined];
+					  new RegExp("xxxx"), {}, new Object(), null, undefined, arguments];
 					  
 	var types = ["Number", "Number", "String", "String",
 	                  "Boolean", "Boolean", "Date", "Error", 
 					  "Array", "Array", "Function", "RegExp", 
-					  "RegExp", "Object", "Object", "Null", "Undefined"];
+					  "RegExp", "Object", "Object", "Null", "Undefined", "Arguments"];
 					  
 	var table = document.getElementById("typeofTable");
 
 	var IE10987Chrome34FireFox29Typeof = ["number","object","string","object","boolean","object",
 	                  "object","object","object","object","function","object",
-					  "object","object","object","object","undefined"];
+					  "object","object","object","object","undefined","object"];
     
 					  
 	var typeofCollect = []; 
@@ -94,12 +94,12 @@ window.onload = function(){
 	var IE109Chrome34FireFox29ToString = ["[object Number]","[object Number]","[object String]","[object String]",
 	                    "[object Boolean]","[object Boolean]","[object Date]","[object Error]",
 						"[object Array]","[object Array]","[object Function]","[object RegExp]",
-						"[object RegExp]","[object Object]","[object Object]","[object Null]","[object Undefined]"];
+						"[object RegExp]","[object Object]","[object Object]","[object Null]","[object Undefined]", "[object Arguments]"];
 						
 	var IE87ToString = ["[object Number]","[object Number]","[object String]","[object String]",
 	            "[object Boolean]","[object Boolean]","[object Date]","[object Error]",
 				"[object Array]","[object Array]","[object Function]","[object RegExp]",
-				"[object RegExp]","[object Object]","[object Object]","[object Object]","[object Object]" ];					
+				"[object RegExp]","[object Object]","[object Object]","[object Object]","[object Object]", "[object Object]" ];					
 	
 	var toStringCollect = []; 
 	 
