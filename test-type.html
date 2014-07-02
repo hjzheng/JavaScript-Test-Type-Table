@@ -2,48 +2,8 @@
 <html>
 <head>	
 	<title>typeof and {}.toString.call</title>
-	<style>
-		body {
-			line-height: 1.6em;
-		}
-		 
-		.table {
-			font-family: "Lucida Sans Unicode", "Lucida Grande", Sans-Serif;
-			font-size: 12px;
-			background: #fff;
-			margin: 45px;
-			width: 880px;
-			border-collapse: collapse;
-			text-align: left;
-		}
-		
-		.table caption {
-			font-size: 16px;
-			font-weight: bold;
-			color: #039;
-			padding: 10px 8px;
-			border-bottom: 2px solid #6678b1;
-		}
-		
-		.table th {
-			font-size: 14px;
-			font-weight: normal;
-			color: #039;
-			padding: 10px 8px;
-			border-bottom: 2px solid #6678b1;
-		}
-		
-		.table td {
-			color: #669;
-			padding: 9px 8px 0px 8px;
-		}
-		
-		.table tr:hover td {
-			color: #009;
-			border-bottom: 1px dotted #6678b1;
-		}
-		 
-	</style>
+    <link type="text/css" href="css/table.css" rel="stylesheet"/>
+    <script type="text/javascript" src="js/table.js"></script>
 </head>
 <script>
 window.onload = function(){
@@ -63,34 +23,25 @@ window.onload = function(){
 					  "Array", "Array", "Function", "RegExp", 
 					  "RegExp", "Object", "Object", "Null", "Undefined", "Arguments"];
 					  
-	var table = document.getElementById("typeofTable");
-
 	var IE10987Chrome34FireFox29Typeof = ["number","object","string","object","boolean","object",
 	                  "object","object","object","object","function","object",
 					  "object","object","object","object","undefined","object"];
     
-					  
-	var typeofCollect = []; 
+	var data = [];
+    data.push(typeStrings);
+    var testResults = [];
+    //push test result in current broswer;
+    for(var i=0; i<typeTestObjs.length; i++){
+        testResults.push(typeof typeTestObjs[i]);
+    }
+    data.push(testResults);
+    data.push(types);
+    data.push(IE10987Chrome34FireFox29Typeof);
+    data.push(IE10987Chrome34FireFox29Typeof);
+
+	createTable("typeofTable", data);
 	
-	for(var i=0; i<typeStrings.length; i++){
-		var row = table.insertRow(table.rows.length);  
-        var cell0 = row.insertCell(0);  
-		cell0.innerHTML = typeStrings[i]; 
-		var cell1 = row.insertCell(1); 
-		cell1.innerHTML = (typeof typeTestObjs[i]); 
-		typeofCollect.push("\""+(typeof typeTestObjs[i])+"\"");
-		var cell2 = row.insertCell(2); 
-		cell2.innerHTML = (types[i]); 
-		var cell3 = row.insertCell(3); 
-		cell3.innerHTML = (IE10987Chrome34FireFox29Typeof[i]); 
-		var cell4 = row.insertCell(4); 
-		cell4.innerHTML = (IE10987Chrome34FireFox29Typeof[i]); 
-	}
-	
-	console.log(typeofCollect);
-	
-	var toStringTable = document.getElementById("toStringTable");
-    
+
 	var IE109Chrome34FireFox29ToString = ["[object Number]","[object Number]","[object String]","[object String]",
 	                    "[object Boolean]","[object Boolean]","[object Date]","[object Error]",
 						"[object Array]","[object Array]","[object Function]","[object RegExp]",
@@ -101,25 +52,20 @@ window.onload = function(){
 				"[object Array]","[object Array]","[object Function]","[object RegExp]",
 				"[object RegExp]","[object Object]","[object Object]","[object Object]","[object Object]", "[object Object]" ];					
 	
-	var toStringCollect = []; 
-	 
 	var toString = {}.toString;
-	for(var i=0; i<typeStrings.length; i++){
-		var row = toStringTable.insertRow(toStringTable.rows.length);  
-        var cell0 = row.insertCell(0);  
-		cell0.innerHTML = typeStrings[i]; 
-		var cell1 = row.insertCell(1); 
-		cell1.innerHTML = toString.call(typeTestObjs[i]); 
-		toStringCollect.push("\""+toString.call(typeTestObjs[i])+"\"");
-		var cell2 = row.insertCell(2); 
-		cell2.innerHTML = (types[i]); 
-		var cell3 = row.insertCell(3); 
-		cell3.innerHTML = (IE109Chrome34FireFox29ToString[i]); 
-		var cell4 = row.insertCell(4); 
-		cell4.innerHTML = (IE87ToString[i]); 
-	}
-	
-	console.log(toStringCollect);
+
+    data = [];
+    data.push(typeStrings);
+    var testResults = [];
+    //push test result in current broswer;
+    for(var i=0; i<typeTestObjs.length; i++){
+        testResults.push(toString.call(typeTestObjs[i]));
+    }
+    data.push(testResults);
+    data.push(types);
+    data.push(IE109Chrome34FireFox29ToString);
+    data.push(IE87ToString);
+    createTable("toStringTable", data);
 }
 </script>
 

@@ -1,0 +1,39 @@
+body {
+    line-height: 1.6em;
+}
+
+.table {
+    font-family: "Lucida Sans Unicode", "Lucida Grande", Sans-Serif;
+    font-size: 12px;
+    background: #fff;
+    margin: 45px;
+    width: 960px;
+    border-collapse: collapse;
+    text-align: left;
+}
+
+.table caption {
+    font-size: 16px;
+    font-weight: bold;
+    color: #039;
+    padding: 10px 8px;
+    border-bottom: 2px solid #6678b1;
+}
+
+.table th {
+    font-size: 14px;
+    font-weight: normal;
+    color: #039;
+    padding: 10px 8px;
+    border-bottom: 2px solid #6678b1;
+}
+
+.table td {
+    color: #669;
+    padding: 9px 8px 9px 8px;
+}
+
+.table tr:hover td {
+    color: #fff;
+    background: #669;
+}
